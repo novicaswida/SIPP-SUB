@@ -2,18 +2,6 @@
 require_once ('koneksi.php');
 session_start();
 ob_start();
-
-if (isset($_POST["submit"])){
-  $nama = $_POST['name'];
-  $alamat = $_POST['alamat'];
-  $hp = $_POST['hp'];
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-  $jenisuser = $_POST['jenisuser'];
-
-  $sql = "INSERT INTO `users`(`nama`, `alamat`,`hp`,`username`, `password`, `jenisuser`) VALUES ('$nama','$alamat','$hp','$username','$password','$jenisuser')";
-  $result = mysqli_query($db,$sql);
-    }
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +38,7 @@ if (isset($_POST["submit"])){
         <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="profile.php"><?=$_SESSION['nama']?></a></li>
+          <li><a href="login.php">Login</a></li>
           <li><a href="pemesanan.php">Pemesanan</a></li>
           <li><a href="penerimaan.php">Penerimaan</a></li>
           <li><a href="stok_pupuk.php">Stok Pupuk</a></li>
@@ -63,55 +51,15 @@ if (isset($_POST["submit"])){
                     <li><a href="#about">Tentang</a></li>
                     <li><a href="#portofolio">Develop</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="logout.php">Keluar</a></li>
+                    <li><a href="">Keluar</a></li>
                 </ul>
           </li>
         </ul>
         <div class="navbar-header">        
-          </nav>
+      
+    </nav>
     <!-- akhir navbar -->
     
-    <div class="container-fluid" style="background-color: lightgreen;">
-    <div class="container" style="width: 800px; background-color: white;">
-    <div class="row">
-      <div class="col-sm-12">
-        <br>
-        <br>
-        <h1 style="text-align: center;">Pendaftaran</h1>
-        <form method="POST">
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="name">Nama</label>
-              <input type="text" name="name" class="form-control" placeholder="masukkan nama" style="width: 400px; height: -20px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="alamat">Alamat</label>
-              <input type="text" name="alamat" class="form-control" placeholder="masukkan alamat" style="width: 400px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="hp">Nomor HP</label>
-              <input type="hp" name="hp" class="form-control" placeholder="masukkan nomor hp" style="width: 400px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="username">Username</label>
-              <input type="text" name="username" class="form-control" placeholder="masukkan username" style="width: 400px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="password">Password</label>
-              <input type="password" name="password" class="form-control" placeholder="masukkan password" style="width: 400px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="jenisuser">Jenis Member</label>
-              <input type="jenisuser" name="jenisuser" class="form-control" placeholder="masukkan angka 2(distributor) atau 3(pengecer)" style="width: 400px;">
-            </div>
-            
-                <input type="submit" class="btn btn" name="submit" 
-                value="Tambah Member"style="margin-left: 410px; margin-top: 20px; margin-bottom: 40px;">
-          </form>
-      </div>
-    </div>
-   </div>
-</div>
-
 
     
     <!-- footer -->

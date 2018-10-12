@@ -42,15 +42,13 @@ require_once ('koneksi.php');
           <li><a href="stok_pupuk.php">Stok Pupuk</a></li>
           <li><a href="penyaluran.php">Penyaluran</a></li>
           <li class="active"><a href="pembayaran.php">Pembayaran</a></li>
-          <li><a href="">Informasi</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
             <ul class="dropdown-menu">
-                    <li><a href="#contact">Login</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">Tentang</a></li>
                     <li><a href="#portofolio">Develop</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="">Daftar</a></li>
+                    <li><a href="">Keluar</a></li>
                 </ul>
           </li>
         </ul>
@@ -111,7 +109,7 @@ require_once ('koneksi.php');
       <div class="container text-center">
         <div class="row">
           <div class="col-sm-12">
-            <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">Novica Sinta Wida</a>.</p>
+            <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">SIPP-SUB</a>.</p>
           </div>
         </div>
         <div class="row">

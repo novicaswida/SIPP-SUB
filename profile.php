@@ -43,71 +43,48 @@ session_start();
           <li><a href="stok_pupuk.php">Stok Pupuk</a></li>
           <li><a href="penyaluran.php">Penyaluran</a></li>
           <li><a href="pembayaran.php">Pembayaran</a></li>
-          <li><a href="">Informasi</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
             <ul class="dropdown-menu">
-                    <li><a href="#contact">Login</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">Tentang</a></li>
                     <li><a href="#portofolio">Develop</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="">Daftar</a></li>
+                    <li><a href="logout.php">Keluar</a></li>
                 </ul>
           </li>
         </ul>
         <div class="navbar-header">        
-      <!-- </div> -->
-
-      <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#contact">Login</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#portofolio">Develop</a></li>
-        </ul>
-      </div> -->
-
-     <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="a">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expand="false" aria-label="Toggle navigation"> 
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Features</a>
-              <a class="nav-item nav-link" href="#">Pricing</a>
-              <a class="nav-item nav-link disabled" href="#">Disabled</a>
-            </div>
-          </div>
-        </div>
-      </nav> -->
+    
     </nav>
     <!-- akhir navbar -->
     
 
    <div class="container-fluid" style="background-color: lightgreen;">
-   	<div class="container" style="width: 400px; background-color: white;">
+   	<div class="container" style="width: 500px; background-color: white;">
    	<div class="row">
    		<div class="col-sm-12">
-   			<h1>Profile User</h1>
+        <br><br><br>
+   			<h1 style="margin-left: 150px;">Profile User</h1>
    			<ul>
    				<li>
-   					Nama:<?=$_SESSION['nama']?>
-   				</li>
+   					Nama: <?=$_SESSION['nama']?>
+   				</li><br>
    				<li>
-   					Email:
-   				</li>
+   					Alamat: <?=$_SESSION['alamat']?>
+   				</li><br>
    				<li>
-   					Username:<?=$_SESSION['username']?>
-   				</li>
+   					Username: <?=$_SESSION['username']?>
+   				</li><br>
    				<li>
-   					Password:<?=$_SESSION['password']?>
-   				</li>
+   					Password: <?=$_SESSION['password']?>
+   				</li><br>
    				<li>
    					Level: <?=$_SESSION['jenisuser']?>
-   				</li>
+   				</li><br>
    			</ul>
+        <br><br><br><br><br>
 
+        
    			
    		</div>
    	</div>
@@ -129,15 +106,16 @@ session_start();
         echo "maaaa";
       }
       }
-    ?>
 
+    ?>
+  <!-- <button href type="submit" class="btn btn-primary" name="editinfo" style="widows: 900px;">Edit Password dan Username</button> -->
 
     <!-- footer -->
     <footer>
       <div class="container text-center">
         <div class="row">
           <div class="col-sm-12">
-            <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">Novica Sinta Wida</a>.</p>
+            <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">SIPP-SUB</a>.</p>
           </div>
         </div>
         <div class="row">

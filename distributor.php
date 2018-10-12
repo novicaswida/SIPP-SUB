@@ -2,18 +2,6 @@
 require_once ('koneksi.php');
 session_start();
 ob_start();
-
-if (isset($_POST["submit"])){
-  $nama = $_POST['name'];
-  $alamat = $_POST['alamat'];
-  $hp = $_POST['hp'];
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-  $jenisuser = $_POST['jenisuser'];
-
-  $sql = "INSERT INTO `users`(`nama`, `alamat`,`hp`,`username`, `password`, `jenisuser`) VALUES ('$nama','$alamat','$hp','$username','$password','$jenisuser')";
-  $result = mysqli_query($db,$sql);
-    }
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +47,6 @@ if (isset($_POST["submit"])){
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
             <ul class="dropdown-menu">
-<!--                     <li><a href="login.php">Masuk</a></li> -->
                     <li><a href="#about">Tentang</a></li>
                     <li><a href="#portofolio">Develop</a></li>
                     <li role="separator" class="divider"></li>
@@ -68,52 +55,20 @@ if (isset($_POST["submit"])){
           </li>
         </ul>
         <div class="navbar-header">        
-          </nav>
+     
+    </nav>
     <!-- akhir navbar -->
     
-    <div class="container-fluid" style="background-color: lightgreen;">
-    <div class="container" style="width: 800px; background-color: white;">
-    <div class="row">
-      <div class="col-sm-12">
-        <br>
-        <br>
-        <h1 style="text-align: center;">Pendaftaran</h1>
-        <form method="POST">
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="name">Nama</label>
-              <input type="text" name="name" class="form-control" placeholder="masukkan nama" style="width: 400px; height: -20px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="alamat">Alamat</label>
-              <input type="text" name="alamat" class="form-control" placeholder="masukkan alamat" style="width: 400px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="hp">Nomor HP</label>
-              <input type="hp" name="hp" class="form-control" placeholder="masukkan nomor hp" style="width: 400px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="username">Username</label>
-              <input type="text" name="username" class="form-control" placeholder="masukkan username" style="width: 400px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="password">Password</label>
-              <input type="password" name="password" class="form-control" placeholder="masukkan password" style="width: 400px;">
-            </div>
-            <div class="form-group" style="margin-left: 140px;">
-              <label for="jenisuser">Jenis Member</label>
-              <input type="jenisuser" name="jenisuser" class="form-control" placeholder="masukkan angka 2(distributor) atau 3(pengecer)" style="width: 400px;">
-            </div>
-            
-                <input type="submit" class="btn btn" name="submit" 
-                value="Tambah Member"style="margin-left: 410px; margin-top: 20px; margin-bottom: 40px;">
-          </form>
-      </div>
+
+    <!-- jumbotron -->
+    <div class="jumbotron text-center">
+      <img src="img/foto.png" class="img/circle" style="border-radius: 50%">
+      <h1 style="font-family: arial, sans-serif; padding-bottom: 70px; color: #875d0a;">Sistem Informasi Pendistribusian Pupuk Bersubsidi</h1>
+      <hr style="margin-top: -20px; border-color: white;"><p style="font-family: arial, sans-serif; font-weight: bold; font-size: 30px; color: darkgreen;">Urea | ZA | NPK | Organik</p>
     </div>
-   </div>
-</div>
+    <!-- akhir jumbotron -->
 
 
-    
     <!-- footer -->
     <footer>
       <div class="container text-center">
@@ -131,6 +86,7 @@ if (isset($_POST["submit"])){
       </div>
     </footer>
     <!-- akhir footer -->
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-3.3.1.min.js"></script>
