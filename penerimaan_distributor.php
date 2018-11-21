@@ -1,8 +1,6 @@
-
 <?php
 require_once ('koneksi.php');
 session_start();
-ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -26,30 +24,25 @@ ob_start();
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <style>
-    .jumbotron {
-      background-image: url(img/bg.jpg);
-      height: auto; width: 100%;
-    }
-  </style>
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
- 
+      <!-- <div class="container-fluid"> -->
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"data-target="#bs-example-navbar-collapse-1"aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="admin.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
+        <a class="navbar-brand" href="distributor.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="profile_admin.php"><?=$_SESSION['nama']?></a></li>
-          <li><a href="data_member.php">Data Member</a></li>
-          <li><a href="stok_pupukadm.php">Stok Pupuk</a></li>
-          <li><a href="penyaluran_adm.php">Penyaluran</a></li>
-          <li><a href="pembayaran_adm.php">Pembayaran</a></li>
+          <li><a href="profile_distributor.php"><?=$_SESSION['nama']?></a></li>
+          <li><a href="pemesanan_distributor.php">Pemesanan</a></li>
+          <li class="active"><a href="penerimaan_distributor.php">Penerimaan</a></li>
+          <li><a href="stok_pupukdistributor.php">Stok Pupuk</a></li>
+          <li><a href="penyaluran_distributor.php">Penyaluran</a></li>
+          <li><a href="pembayaran_distributor.php">Pembayaran</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -58,29 +51,67 @@ ob_start();
           </li>
         </ul>
         <div class="navbar-header">        
-    
+      <!-- </div> -->
+
+      <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#contact">Login</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portofolio">Develop</a></li>
+        </ul>
+      </div> -->
+
+     <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="a">Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expand="false" aria-label="Toggle navigation"> 
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link" href="#">Features</a>
+              <a class="nav-item nav-link" href="#">Pricing</a>
+              <a class="nav-item nav-link disabled" href="#">Disabled</a>
+            </div>
+          </div>
+        </div>
+      </nav> -->
     </nav>
-    
+    <!-- akhir navbar -->
     
 
-    <!-- jumbotron -->
-    <div class="jumbotron text-center">
-      <img src="img/foto.png" class="img/circle" style="border-radius: 50%">
-      <h1 style="font-family: arial, sans-serif; padding-bottom: 160px; font-size: 50px; color: white;">Sistem Informasi Pendistribusian Pupuk Bersubsidi</h1>
-      <hr style="margin-top: -140px; border-color: white;"><p style="font-family: arial, sans-serif; font-weight: bold; font-size: 30px; color: white; margin-top: 30px;">Urea | ZA | NPK | Organik</p>
-    </div>
-    <!-- akhir jumbotron -->
+   <div>
+   	<h1>yyyyyyyyyyyyyyyyyyyy</h1>
+   </div>
+    
+    <?php
+      if (isset($_POST['submit'])) {
+        // alert("a");
+        $username = $_POST['email'];
+      $password = $_POST['password'];
+      $sql = "select * from users where username = '$username' and
+      password = '$password'";
+      $result = mysqli_query($db,$sql);
+      if (mysqli_num_rows($result)>0) {
+        // header("Location: admin.php");
+        echo "a";
+      } else {
+        echo "maaaa";
+      }
+      }
+    ?>
 
 
     <!-- footer -->
-    <footer style="height: 110px; margin-top: -30px;">
+    <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">
           <div class="col-sm-12">
             <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">SIPP-SUB</a>.</p>
           </div>
-        </div>
+      </div>
     </footer>
+
     <!-- akhir footer -->
 
 

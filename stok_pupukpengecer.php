@@ -34,21 +34,18 @@ session_start();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
+        <a class="navbar-brand" href="pengecer.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="profile.php">Profile</a></li>
-          <li><a href="pemesanan.php">Pemesanan</a></li>
-          <li><a href="penerimaan.php">Penerimaan</a></li>
-          <li><a href="stok_pupuk.php">Stok Pupuk</a></li>
-          <li><a href="penyaluran.php">Penyaluran</a></li>
-          <li><a href="pembayaran.php">Pembayaran</a></li>
+          <li><a href="profile_pengecer.php"><?=$_SESSION['nama']?></a></li>
+          <li><a href="pemesanan_pengecer.php">Pemesanan</a></li>
+          <li><a href="penerimaan_pengecer.php">Penerimaan</a></li>
+          <li class="active"><a href="stok_pupukpengecer.php">Stok Pupuk</a></li>
+          <li><a href="penyaluran_pengecer.php">Penyaluran</a></li>
+          <li><a href="pembayaran_pengecer.php">Pembayaran</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
             <ul class="dropdown-menu">
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#portofolio">Develop</a></li>
-                    <li role="separator" class="divider"></li>
                     <li><a href="logout.php">Keluar</a></li>
                 </ul>
           </li>
@@ -57,74 +54,56 @@ session_start();
     
     </nav>
     <!-- akhir navbar -->
-    
+  
+   <br><br><br>
+  <h2 style="text-align: center;">Stok Pupuk</h2>
+  <div class="container">
+  <div class="table">
+    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+              <thead>
+                <tr>
+                  <th>Id Pupuk</th>
+                  <th>Nama Pupuk</th>
+                  <th>Jumlah Stok</th>
+                </tr>
+              </thead>
+            <tbody>
+              <?php 
+                $sql = "select * from pupuk p join stok s, users u where p.id=s.id_pupuk and u.id=s.id_user";
+                $result = mysqli_query($db,$sql);
+                while ($data = mysqli_fetch_assoc($result)) {
+              ?>
+              <tr>
+                <td><?php echo $data['u.users'] ?></td>
+                <td><?php echo $data['u.nama'] ?></td>
+                <td><?php echo $data['p.nama'] ?></td>
+                <td><?php echo $data['s.stok'] ?></td>
 
-   <div class="container-fluid" style="background-color: lightgreen;">
-   	<div class="container" style="width: 500px; background-color: white;">
-   	<div class="row">
-   		<div class="col-sm-12">
-        <br><br><br>
-   			<h1 style="margin-left: 150px;">Profile User</h1>
-   			<ul>
-   				<li>
-   					Nama: <?=$_SESSION['nama']?>
-   				</li><br>
-   				<li>
-   					Alamat: <?=$_SESSION['alamat']?>
-   				</li><br>
-   				<li>
-   					Username: <?=$_SESSION['username']?>
-   				</li><br>
-   				<li>
-   					Password: <?=$_SESSION['password']?>
-   				</li><br>
-   				<li>
-   					Level: <?=$_SESSION['jenisuser']?>
-   				</li><br>
-   			</ul>
-        <br><br><br><br><br>
+                
+                                              
+                                                  <!-- <a href="barangubah.php?id=<?php echo $data['id']; ?>" class="btn btn-success" >Ubah</a>
+                                                  <a href="">Hapus</a> -->
 
-        
-   			
-   		</div>
-   	</div>
-   </div>
-</div>
-    
-    <?php
-      if (isset($_POST['submit'])) {
-        // alert("a");
-        $username = $_POST['email'];
-      $password = $_POST['password'];
-      $sql = "select * from users where username = '$username' and
-      password = '$password'";
-      $result = mysqli_query($db,$sql);
-      if (mysqli_num_rows($result)>0) {
-        // header("Location: admin.php");
-        echo "a";
-      } else {
-        echo "maaaa";
-      }
-      }
+                                            </td>
+                                        </tr>
 
-    ?>
-  <!-- <button href type="submit" class="btn btn-primary" name="editinfo" style="widows: 900px;">Edit Password dan Username</button> -->
+                                        <?php } ?>
+
+                                    </tbody>
+                                  </table>
+                                 
+                              </div>
+                              </div>
 
     <!-- footer -->
-    <footer>
+    <br><br><br>
+    <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">
           <div class="col-sm-12">
             <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">SIPP-SUB</a>.</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <a href="http://youtube.com/Novica Sinta Wida" class="btn btn-danger">Subcribe for YouTube
-            </a>
-          </div>
-        </div>
-      </div>
     </footer>
     <!-- akhir footer -->
 

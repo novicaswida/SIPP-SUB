@@ -1,5 +1,6 @@
 <?php
 require_once ('koneksi.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -33,22 +34,18 @@ require_once ('koneksi.php');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
+        <a class="navbar-brand" href="admin.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="profile.php">Profile</a></li>
-          <li><a href="pemesanan.php">Pemesanan</a></li>
-          <li><a href="penerimaan.php">Penerimaan</a></li>
-          <li><a href="stok_pupuk.php">Stok Pupuk</a></li>
-          <li><a href="penyaluran.php">Penyaluran</a></li>
-          <li class="active"><a href="pembayaran.php">Pembayaran</a></li>
+          <li><a href="profile_admin.php"><?=$_SESSION['nama']?></a></li>
+          <li><a href="data_member.php">Data Member</a></li>
+          <li><a href="stok_pupukadm.php">Stok Pupuk</a></li>
+          <li class="active"><a href="penyaluran_adm.php">Penyaluran</a></li>
+          <li><a href="pembayaran_adm.php">Pembayaran</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
             <ul class="dropdown-menu">
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#portofolio">Develop</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="">Keluar</a></li>
+                    <li><a href="logout.php">Keluar</a></li>
                 </ul>
           </li>
         </ul>
@@ -83,7 +80,7 @@ require_once ('koneksi.php');
     
 
    <div>
-   	<h1>pppppppppppp</h1>
+   	<h1></h1>
    </div>
     
     <?php
@@ -105,20 +102,14 @@ require_once ('koneksi.php');
 
 
     <!-- footer -->
-    <footer>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">
           <div class="col-sm-12">
             <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">SIPP-SUB</a>.</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <a href="http://youtube.com/Novica Sinta Wida" class="btn btn-danger">Subcribe for YouTube
-            </a>
-          </div>
-        </div>
-      </div>
     </footer>
     <!-- akhir footer -->
 
@@ -129,3 +120,8 @@ require_once ('koneksi.php');
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+
+
+select pu.id, pu.nama_pupuk, sum(dp.jumlah) from pupuk pu, pembelian p, detailpembelian dp
+where p.id=dp.id_pembelian and pu.id=dp.id_pupuk
+group by pu.id, pu.nama_pupuk

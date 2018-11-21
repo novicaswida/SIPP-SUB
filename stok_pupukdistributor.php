@@ -1,7 +1,6 @@
 <?php
 require_once ('koneksi.php');
 session_start();
-ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -25,20 +24,6 @@ ob_start();
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <style>
-    .jumbotron {
-      background-image: url(img/bg.jpg);
-      margin-top: 50px;
-      width: 100%;
-      background-size: cover;
-    }
-
-    body {
-      margin-top: -15px;
-    }
-
-    
-  </style>
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -49,54 +34,80 @@ ob_start();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
+        <a class="navbar-brand" href="distributor.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="login.php">Masuk</a></li>
+          <li><a href="profile_distributor.php"><?=$_SESSION['nama']?></a></li>
+          <li><a href="pemesanan_distributor.php">Pemesanan</a></li>
+          <li><a href="penerimaan_distributor.php">Penerimaan</a></li>
+          <li class="active"><a href="stok_pupukdistributor.php">Stok Pupuk</a></li>
+          <li><a href="penyaluran_distributor.php">Penyaluran</a></li>
+          <li><a href="pembayaran_distributor.php">Pembayaran</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
-            
+            <ul class="dropdown-menu">
+                    <li><a href="logout.php">Keluar</a></li>
+                </ul>
           </li>
         </ul>
         <div class="navbar-header">        
+    
     </nav>
     <!-- akhir navbar -->
-    
+    <br><br><br>
+  <h2 style="text-align: center;">Stok Pupuk</h2>
+  <div class="container">
+  <div class="table">
+    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+              <thead>
+                <tr>
+                  <th>Id Pupuk</th>
+                  <th>Nama Pupuk</th>
+                  <th>Jumlah Stok</th>
+                </tr>
+              </thead>
+            <tbody>
+              <?php 
+                $sql = "select * from pupuk p join stok s, users u where p.id=s.id_pupuk and u.id=s.id_user";
+                $result = mysqli_query($db,$sql);
+                while ($data = mysqli_fetch_assoc($result)) {
+              ?>
+              <tr>
+                <td><?php echo $data['u.users'] ?></td>
+                <td><?php echo $data['u.nama'] ?></td>
+                <td><?php echo $data['p.nama'] ?></td>
+                <td><?php echo $data['s.stok'] ?></td>
 
-    <!-- jumbotron -->
-    <div class="jumbotron text-center"><br>
-      <img src="img/foto.png" class="img/circle" style="border-radius: 50%">
-      <h1 style="font-family: arial, sans-serif; padding-bottom: 160px; font-size: 50px; color: white;">Sistem Informasi Pendistribusian Pupuk Bersubsidi</h1>
-      <hr style="margin-top: -140px; border-color: white;"><p style="font-family: arial, sans-serif; font-weight: bold; font-size: 30px; color: white; margin-top: 30px;">Urea | ZA | NPK | Organik</p>
-    </div>
-    <!-- akhir jumbotron -->
+                
+                                              
+                                                  <!-- <a href="barangubah.php?id=<?php echo $data['id']; ?>" class="btn btn-success" >Ubah</a>
+                                                  <a href="">Hapus</a> -->
 
-<div>
-  
-</div>
+                                            </td>
+                                        </tr>
 
+                                        <?php } ?>
 
-
+                                    </tbody>
+                                  </table>
+                                 
+                              </div>
+                              </div>
+  <!-- <button href type="submit" class="btn btn-primary" name="editinfo" style="widows: 900px;">Edit Password dan Username</button> -->
 
     <!-- footer -->
-    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
     <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">
           <div class="col-sm-12">
             <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">SIPP-SUB</a>.</p>
           </div>
-        </div>
-        <!-- <div class="row">
-          <div class="col-sm-12">
-            <br>
-            <br>
-            <a style="margin-top: -60px;" href="http://youtube.com/Novica Sinta Wida" class="btn btn-danger">Subcribe for YouTube
-            </a>
-          </div>
-        </div>
-      </div> -->
+      </div>
     </footer>
+
     <!-- akhir footer -->
 
 

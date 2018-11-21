@@ -1,7 +1,6 @@
 <?php
 require_once ('koneksi.php');
 session_start();
-ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +24,6 @@ ob_start();
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <style>
-    .jumbotron {
-      background-image: url(img/bg.jpg);
-      height: auto; width: 100%;
-    }
-  </style>
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -44,7 +37,7 @@ ob_start();
         <a class="navbar-brand" href="pengecer.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="profile_pengecer.php"><?=$_SESSION['nama']?></a></li>
+          <li class="active"><a href="profile_pengecer.php"><?=$_SESSION['nama']?></a></li>
           <li><a href="pemesanan_pengecer.php">Pemesanan</a></li>
           <li><a href="penerimaan_pengecer.php">Penerimaan</a></li>
           <li><a href="stok_pupukpengecer.php">Stok Pupuk</a></li>
@@ -58,21 +51,95 @@ ob_start();
           </li>
         </ul>
         <div class="navbar-header">        
-     
+    
     </nav>
     <!-- akhir navbar -->
     
 
-    <!-- jumbotron -->
-   <div class="jumbotron text-center">
-      <img src="img/foto.png" class="img/circle" style="border-radius: 50%">
-      <h1 style="font-family: arial, sans-serif; padding-bottom: 160px; font-size: 50px; color: white;">Sistem Informasi Pendistribusian Pupuk Bersubsidi</h1>
-      <hr style="margin-top: -140px; border-color: white;"><p style="font-family: arial, sans-serif; font-weight: bold; font-size: 30px; color: white; margin-top: 30px;">Urea | ZA | NPK | Organik</p>
-    </div>
-    <!-- akhir jumbotron -->
+    <div style="text-align: left;" class="container">
+    <div class="table">
+        <br><br><br>
+   			<h1 style="margin-left: 150px;">Profile User</h1>
+   			<ul>
+   				<li>
+   					Nama: <?=$_SESSION['nama']?>
+   				</li><br>
+   				<li>
+   					Alamat: <?=$_SESSION['alamat']?>
+   				</li><br>
+   				<li>
+   					Username: <?=$_SESSION['username']?>
+   				</li><br>
+   				<li>
+   					Password: <?=$_SESSION['password']?>
+   				</li><br>
+   				<li>
+   					Level: <?=$_SESSION['jenisuser']?>
+   				</li><br>
+   			</ul>
+        <br><br><br><br><br>
+<button style="margin-left: 50px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Ganti Username/Password
+</button>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Masukkan Username/Password Baru</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container">
+    <form method="POST" action="profile_admin.php">
+        <div class="form-group" style="width: 400px; color: black;">
+          <label for="nama">Username</label>
+          <input type="text" name="username" class="form-control" placeholder="Username baru" required>
+        </div>
+        <div class="form-group" style="width: 400px; color: black;">
+          <label for="password">Password</label>
+          <input type="text" class="form-control" rows="5" name="password" placeholder="Password baru" required></input>
+      </div>
+      </form>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+        <button onclick="myFunction()" type="" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+   			
+   		</div>
+   	</div>
+   </div>
+</div>
+    
+    <?php
+      if (isset($_POST['submit'])) {
+        // alert("a");
+        $username = $_POST['email'];
+      $password = $_POST['password'];
+      $sql = "select * from users where username = '$username' and
+      password = '$password'";
+      $result = mysqli_query($db,$sql);
+      if (mysqli_num_rows($result)>0) {
+        // header("Location: admin.php");
+        echo "a";
+      } else {
+        echo "maaaa";
+      }
+      }
+
+    ?>
+  <!-- <button href type="submit" class="btn btn-primary" name="editinfo" style="widows: 900px;">Edit Password dan Username</button> -->
 
     <!-- footer -->
+    <br><br>
     <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">

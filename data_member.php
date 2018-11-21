@@ -13,7 +13,6 @@ if (isset($_POST["submit"])){
 
   $sql = "INSERT INTO `users`(`nama`, `alamat`,`hp`,`username`, `password`, `jenisuser`) VALUES ('$nama','$alamat','$hp','$username','$password','$jenisuser')";
   $result = mysqli_query($db,$sql);
-
     }
 ?>
 
@@ -52,7 +51,7 @@ if (isset($_POST["submit"])){
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="profile_admin.php"><?=$_SESSION['nama']?></a></li>
-          <li><a href="data_member.php">Data Member</a></li>
+          <li class="active"><a href="data_member.php">Data Member</a></li>
           <li><a href="stok_pupukadm.php">Stok Pupuk</a></li>
           <li><a href="penyaluran_adm.php">Penyaluran</a></li>
           <li><a href="pembayaran_adm.php">Pembayaran</a></li>
@@ -67,52 +66,75 @@ if (isset($_POST["submit"])){
           </nav>
     <!-- akhir navbar -->
     
-   
-    <div class="container">
+    <!-- <div class="container-fluid" style="background-color: lightgreen;">
+    <div class="container" style="width: 1000px; background-color: white;">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-12"> -->
         <br>
         <br>
-        <h1 style="text-align: center;">Tambah Member</h1>
-        <form method="POST">
-            <div class="form-group" style="margin-left: 350px;">
-              <label for="name">Nama</label>
-              <input type="text" name="name" class="form-control" placeholder="masukkan nama" style="width: 400px; height: -20px;" required>
-            </div>
-            <div class="form-group" style="margin-left: 350px;">
-              <label for="alamat">Alamat</label>
-              <input type="text" name="alamat" class="form-control" placeholder="masukkan alamat" style="width: 400px;" required>
-            </div>
-            <div class="form-group" style="margin-left: 350px;">
-              <label for="hp">Nomor HP</label>
-              <input type="number" name="hp" class="form-control" placeholder="masukkan nomor hp" style="width: 400px;" required>
-            </div>
-            <div class="form-group" style="margin-left: 350px;">
-              <label for="username">Username</label>
-              <input type="text" name="username" class="form-control" placeholder="masukkan username" style="width: 400px;" required>
-            </div>
-            <div class="form-group" style="margin-left: 350px;">
-              <label for="password">Password</label>
-              <input type="password" name="password" class="form-control" placeholder="masukkan password" style="width: 400px;" required>
-            </div>
+        <h2 style="text-align: center;">Data Member</h2>
+        <div class="container">
+        <div class="table">
+        <!-- <div class="body">
+          <div class="table"> -->
+            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Id Member</th>
+                  <th>Nama</th>
+                  <th>Alamat</th>
+                  <th>No Telepon</th>
+                  <th>Username</th>
+                  <th>Password</th>
+                  <th>Jenis User</th>
+                </tr>
+              </thead>
+            <tbody>
+              <?php 
+                $no= 1;
+                $sql = "select * from users";
+                $result = mysqli_query($db,$sql);
+                while ($data = mysqli_fetch_assoc($result)) {
+              ?>
+              <tr>
+                <td><?php echo $no++; ?></td>
+                <td><?php echo $data['id'] ?></td>
+                <td><?php echo $data['nama'] ?></td>
+                <td><?php echo $data['alamat'] ?></td>
+                <td><?php echo $data['hp'] ?></td>
+                <td><?php echo $data['username'] ?></td>
+                <td><?php echo $data['password'] ?></td>
+                                            <?php
+                                            $jabatan="";
+                                            if ($data['jenisuser'] == 1) {
+                                              $jabatan = "admin";
+                                            } else if ($data['jenisuser'] == 2){
+                                              $jabatan = "distributor";
+                                            } else if ($data['jenisuser'] == 3){
+                                              $jabatan = "pengecer";
+                                            }
+                                            ?>
+                                            <td><?php echo $jabatan ?></td>
+                                            <td>
+                                              
+                                                  <!-- <a href="barangubah.php?id=<?php echo $data['id']; ?>" class="btn btn-success" >Ubah</a>
+                                                  <a href="">Hapus</a> -->
 
-            <div class="form-group" style="margin-left: 350px;">
-              <label for="jenisuser">Jenis Member</label>
-              <select name="jenisuser">
-                <option value="2">Distributor</option>
-                <option value="3">Pengecer</option>
-              </select>
-            </div>
-                <a style="margin-left: 500px;" class="btn btn-primary submit-button" name="simpan" type="submit" href="register.php">Daftar</a>
-                  
-          </form>
-      </div>
-    </div>
-   </div>
-</div>
+                                            </td>
+                                        </tr>
 
+                                        <?php } ?>
 
-    <br><br>
+                                    </tbody>
+                                  </table>
+                                  <a href="register.php" class="btn btn-primary">Tambah Member</a>
+                              </div>
+                   </div>
+          
+  <br><br><br><br><br><br>
+
+    
     <!-- footer -->
     <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">

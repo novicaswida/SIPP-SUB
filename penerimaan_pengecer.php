@@ -1,8 +1,6 @@
-
 <?php
 require_once ('koneksi.php');
 session_start();
-ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -26,30 +24,25 @@ ob_start();
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <style>
-    .jumbotron {
-      background-image: url(img/bg.jpg);
-      height: auto; width: 100%;
-    }
-  </style>
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
- 
+      <!-- <div class="container-fluid"> -->
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"data-target="#bs-example-navbar-collapse-1"aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="admin.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
+        <a class="navbar-brand" href="pengecer.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="profile_admin.php"><?=$_SESSION['nama']?></a></li>
-          <li><a href="data_member.php">Data Member</a></li>
-          <li><a href="stok_pupukadm.php">Stok Pupuk</a></li>
-          <li><a href="penyaluran_adm.php">Penyaluran</a></li>
-          <li><a href="pembayaran_adm.php">Pembayaran</a></li>
+          <li><a href="profile_pengecer.php"><?=$_SESSION['nama']?></a></li>
+          <li><a href="pemesanan_pengecer.php">Pemesanan</a></li>
+          <li class="active"><a href="penerimaan_pengecer.php">Penerimaan</a></li>
+          <li><a href="stok_pupukpengecer.php">Stok Pupuk</a></li>
+          <li><a href="penyaluran_pengecer.php">Penyaluran</a></li>
+          <li><a href="pembayaran_pengecer.php">Pembayaran</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -60,20 +53,33 @@ ob_start();
         <div class="navbar-header">        
     
     </nav>
-    
+    <!-- akhir navbar -->
     
 
-    <!-- jumbotron -->
-    <div class="jumbotron text-center">
-      <img src="img/foto.png" class="img/circle" style="border-radius: 50%">
-      <h1 style="font-family: arial, sans-serif; padding-bottom: 160px; font-size: 50px; color: white;">Sistem Informasi Pendistribusian Pupuk Bersubsidi</h1>
-      <hr style="margin-top: -140px; border-color: white;"><p style="font-family: arial, sans-serif; font-weight: bold; font-size: 30px; color: white; margin-top: 30px;">Urea | ZA | NPK | Organik</p>
-    </div>
-    <!-- akhir jumbotron -->
+   
+    
+    <?php
+      if (isset($_POST['submit'])) {
+        // alert("a");
+        $username = $_POST['email'];
+      $password = $_POST['password'];
+      $sql = "select * from users where username = '$username' and
+      password = '$password'";
+      $result = mysqli_query($db,$sql);
+      if (mysqli_num_rows($result)>0) {
+        // header("Location: admin.php");
+        echo "a";
+      } else {
+        echo "maaaa";
+      }
+      }
 
+    ?>
+  <!-- <button href type="submit" class="btn btn-primary" name="editinfo" style="widows: 900px;">Edit Password dan Username</button> -->
 
     <!-- footer -->
-    <footer style="height: 110px; margin-top: -30px;">
+    <br><br>
+    <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">
           <div class="col-sm-12">

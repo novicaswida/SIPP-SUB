@@ -1,7 +1,6 @@
 <?php
 require_once ('koneksi.php');
 session_start();
-ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -35,50 +34,61 @@ ob_start();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
+        <a class="navbar-brand" href="pengecer.php"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span> SIPP-SUB</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="login.php">Login</a></li>
-          <li><a href="pemesanan.php">Pemesanan</a></li>
-          <li><a href="penerimaan.php">Penerimaan</a></li>
-          <li><a href="stok_pupuk.php">Stok Pupuk</a></li>
-          <li><a href="penyaluran.php">Penyaluran</a></li>
-          <li><a href="pembayaran.php">Pembayaran</a></li>
+          <li><a href="profile_pengecer.php"><?=$_SESSION['nama']?></a></li>
+          <li><a href="pemesanan_pengecer.php">Pemesanan</a></li>
+          <li><a href="penerimaan_pengecer.php">Penerimaan</a></li>
+          <li><a href="stok_pupukpengecer.php">Stok Pupuk</a></li>
+          <li class="active"><a href="penyaluran_pengecer.php">Penyaluran</a></li>
+          <li><a href="pembayaran_pengecer.php">Pembayaran</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:white"><span class="caret"></span></a>
             <ul class="dropdown-menu">
-<!--                     <li><a href="login.php">Masuk</a></li> -->
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#portofolio">Develop</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="">Keluar</a></li>
+                    <li><a href="logout.php">Keluar</a></li>
                 </ul>
           </li>
         </ul>
         <div class="navbar-header">        
-      
+    
     </nav>
     <!-- akhir navbar -->
     
 
+   
     
+    <?php
+      if (isset($_POST['submit'])) {
+        // alert("a");
+        $username = $_POST['email'];
+      $password = $_POST['password'];
+      $sql = "select * from users where username = '$username' and
+      password = '$password'";
+      $result = mysqli_query($db,$sql);
+      if (mysqli_num_rows($result)>0) {
+        // header("Location: admin.php");
+        echo "a";
+      } else {
+        echo "maaaa";
+      }
+      }
+
+    ?>
+  <!-- <button href type="submit" class="btn btn-primary" name="editinfo" style="widows: 900px;">Edit Password dan Username</button> -->
+
     <!-- footer -->
-    <footer>
+    <br><br><br>
+    <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">
           <div class="col-sm-12">
             <p>&copy; copyright 2018 | built with <i class="glyphicon glyphicon-heart"></i> by. <a href="https://instagram.com/novicaswida">SIPP-SUB</a>.</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <a href="http://youtube.com/Novica Sinta Wida" class="btn btn-danger">Subcribe for YouTube
-            </a>
-          </div>
-        </div>
-      </div>
     </footer>
     <!-- akhir footer -->
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -86,3 +96,7 @@ ob_start();
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+
+select p.id, u.nama, p.nama_pembeli, pu.nama_pupuk, jumlah, tanggal
+from users u, pupuk pu, penyaluran p
+where u.id=p.id_pengecer and pu.id=p.id_pupuk
