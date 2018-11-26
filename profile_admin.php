@@ -97,11 +97,11 @@ session_start();
     <form method="POST" action="profile_admin.php">
         <div class="form-group" style="width: 400px; color: black;">
           <label for="nama">Username</label>
-          <input type="text" name="username" class="form-control" placeholder="Username baru" required>
+          <input type="text" name="username" class="form-control" placeholder="Username baru" required="">
         </div>
         <div class="form-group" style="width: 400px; color: black;">
           <label for="password">Password</label>
-          <input type="text" class="form-control" rows="5" name="password" placeholder="Password baru" required></input>
+          <input type="text" class="form-control" rows="5" name="password" placeholder="Password baru" required=""></input>
       </div>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
          <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
@@ -128,11 +128,6 @@ if (isset($_POST['simpan'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    
-
-    
-//      $sql = "INSERT INTO user (`iduser`, `nama`, `username`, `password`, `email`, `noktp`, `alamat`, `level`, `status`) 
-//    values ('', '$nama', '$username', '$password', '$email', '$ktp', '$alamat', 'user', 'nonaktif')";
     $sql = "UPDATE `users` SET `username`='$username',`password`='$password' WHERE id=$id";
       $query = mysqli_query($db,$sql);
    

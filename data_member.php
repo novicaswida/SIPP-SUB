@@ -75,8 +75,6 @@ if (isset($_POST["submit"])){
         <h2 style="text-align: center;">Data Member</h2>
         <div class="container">
         <div class="table">
-        <!-- <div class="body">
-          <div class="table"> -->
             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
               <thead>
                 <tr>

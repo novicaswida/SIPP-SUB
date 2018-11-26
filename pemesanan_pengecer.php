@@ -59,45 +59,7 @@ session_start();
 <br><br>
  <h2 style="text-align: center;">Daftar Pupuk</h2>
     <div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="img/pupuk_npk.png" alt="...">
-      <div class="caption">
-        <h3>NPK</h3>
-        <p><a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModal">Pesan</a></p>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Masukkan jumlah pesanan</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="container">
-    <form method="POST" action="profile_admin.php">
-        <div class="form-group" style="width: 400px; color: black;">
-          <label for="pesan">Jumlah</label>
-          <input type="number" name="pesen" class="form-control" placeholder="Jumlah pesanan" required>
-        </div>
-      </div>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-        <button onclick="myFunction()" type="submit" class="btn btn-primary">OK</button>
-      </div>
-      </form>
-      </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
+      <div class="col-md-4">
     <div class="thumbnail">
       <img src="img/pupuk_za.png" alt="...">
       <div class="caption">
@@ -121,7 +83,7 @@ session_start();
         </div>
       </div>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-        <button onclick="myFunction()" type="submit" class="btn btn-primary">OK</button>
+        <button type="submit" class="btn btn-primary">OK</button>
       </div>
       </form>
       </div>
@@ -137,9 +99,45 @@ session_start();
       </div>
     </div>
   </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <img src="img/pupuk_npk.png" alt="...">
+      <div class="caption">
+        <h3>NPK</h3>
+        <p><a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#exampleModal">Pesan</a></p>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Masukkan jumlah pesanan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container">
+    <form method="POST" action="profile_admin.php">
+        <div class="form-group" style="width: 400px; color: black;">
+          <label for="pesan">Jumlah</label>
+          <input type="number" name="pesen" class="form-control" placeholder="Jumlah pesanan" required>
+        </div>
+      </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+        <button type="submit" class="btn btn-primary">OK</button>
+      </div>
+      </form>
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row">
-  <div class="col-sm-6 col-md-4">
+  <div class="col-md-4">
     <div class="thumbnail">
       <img src="img/pupuk_urea.png" alt="...">
       <div class="caption">
@@ -163,7 +161,7 @@ session_start();
         </div>
       </div>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-        <button onclick="myFunction()" type="submit" class="btn btn-primary">OK</button>
+        <button type="submit" class="btn btn-primary">OK</button>
       </div>
       </form>
       </div>
@@ -205,7 +203,7 @@ session_start();
         </div>
       </div>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-        <button onclick="myFunction()" type="submit" class="btn btn-primary">OK</button>
+        <button type="submit" class="btn btn-primary">OK</button>
       </div>
       </form>
       </div>

@@ -63,21 +63,22 @@ session_start();
               <thead>
                 <tr>
                   <th>Id Pupuk</th>
+                  <th>Nama</th>
                   <th>Nama Pupuk</th>
                   <th>Jumlah Stok</th>
                 </tr>
               </thead>
             <tbody>
               <?php 
-                $sql = "select * from pupuk p join stok s, users u where p.id=s.id_pupuk and u.id=s.id_user";
+                $sql = "select u.id as id, u.nama as nama, p.nama_pupuk as pupuk, s.stok as stok from pupuk p join stok s, users u where p.id=s.id_pupuk and u.id=s.id_user";
                 $result = mysqli_query($db,$sql);
                 while ($data = mysqli_fetch_assoc($result)) {
               ?>
               <tr>
-                <td><?php echo $data['u.users'] ?></td>
-                <td><?php echo $data['u.nama'] ?></td>
-                <td><?php echo $data['p.nama'] ?></td>
-                <td><?php echo $data['s.stok'] ?></td>
+                <td><?php echo $data['id'] ?></td>
+                <td><?php echo $data['nama'] ?></td>
+                <td><?php echo $data['pupuk'] ?></td>
+                <td><?php echo $data['stok'] ?></td>
 
                 
                                               
@@ -95,8 +96,54 @@ session_start();
                               </div>
                               </div>
 
+
+
+<button style="margin-left: 115px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Tambah Stok Pupuk
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel" style="text-align: center;">Stok Distributor</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container">
+    <form method="POST" action="profile_admin.php">
+        <label for="">Pupuk</label> 
+        <div class="form-group" style="width: 400px; color: black;">
+            <div class="form-line">
+                    <select name="pilih" class="form-control show-tick">
+                    <option value="Organik">Organik</option>
+                    <option value="NPA">NPA</option>
+                    <option value="ZA">ZA</option>
+                    <option value="Urea">Urea</option>
+                    </select>
+                </div>
+            </div>
+        <div class="form-group" style="width: 400px; color: black;">
+          <label for="jumlah">Jumlah Stok</label>
+          <input type="number" name="pupuk" class="form-control" placeholder="Jumlah stok" required>
+        </div>
+        
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+            <button type="submit" class="btn btn-primary" onclick="myFunction()" name="simpan" data-dismiss="modal">Simpan</button>
+
+   
+      </form>
+      </div>
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
     <!-- footer -->
-    <br><br><br>
+    <br><br><br><br><br><br>
     <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">

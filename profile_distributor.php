@@ -103,12 +103,13 @@ session_start();
           <label for="password">Password</label>
           <input type="text" class="form-control" rows="5" name="password" placeholder="Password baru" required></input>
       </div>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+        <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
       </form>
       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-        <input name="simpan" class="btn btn-primary"><a href=""></a></input>
+        
       </div>
     </div>
   </div>
@@ -121,23 +122,39 @@ session_start();
    </div>
 </div>
     
-    <?php
-      if (isset($_POST['simpan'])) {
-        // alert("a");
-        $username = $_POST['username'];
-      $password = $_POST['password'];
-      $result = mysqli_query($db,$sql);
-      if (mysqli_num_rows($result)>0) {
-        // header("Location: admin.php");
-        echo "a";
-      } else {
-        echo "maaaa";
-      }
-      }
+    <?php  
+include 'koneksi.php';
+$id = $_SESSION['id'];   
+if (isset($_POST['simpan'])){
+    var_dump($nama);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    ?>
-  <!-- <button href type="submit" class="btn btn-primary" name="editinfo" style="widows: 900px;">Edit Password dan Username</button> -->
+    $sql = "UPDATE `users` SET `username`='$username',`password`='$password' WHERE id=$id";
+      $query = mysqli_query($db,$sql);
+   
+      
+    if($query){
+        ?>
+        <script type="text/javascript">
+            alert("Username/Password anda berhasil diubah");
+            window.location.href="profile_admin.php";
+        
+        </script>
+        
+        <?php  } else {
+            ?>
+            <script>
+            alert("asd");
+            </script><?php
+        }
+}
 
+?>
+</div>
+</div>
+</div>
+</div>
     <!-- footer -->
     <br><br><br>
     <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">

@@ -1,7 +1,25 @@
 <?php
 require_once ('koneksi.php');
 session_start();
+// ob_start();
+
+if (isset($_POST["submit"])){
+  $id = $_POST['id'];
+  $nama = $_POST['nama'];
+  $pupuk = $_POST['pupuk'];
+  $pilih = $_POST['stok'];
+  $sql = "INSERT INTO `users`(`id`, `nama`,`nama_pupuk`,`stok`) VALUES ('$id','$nama','$nama_pupuk','$stok')";
+    if ($nama=="") {
+      echo "<script>alert('Harus Diisi');history.back(-1);</script>";
+    } else {
+       $result = mysqli_query($db,$sql);
+    }
+    
+  
+  
+  }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,10 +123,7 @@ session_start();
       <div class="modal-body">
       <div class="container">
     <form method="POST" action="profile_admin.php">
-        <div class="form-group" style="width: 400px; color: black;">
-          <label for="id">Id User</label>
-          <input type="id" name="id" class="form-control" placeholder="Id user" required>
-        </div>
+        
         <div class="form-group" style="width: 400px; color: black;">
           <label for="nama">Nama Distributor</label>
           <input type="text" name="nama" class="form-control" placeholder="Nama distributor" required>
@@ -121,25 +136,28 @@ session_start();
         <div class="form-group" style="width: 400px; color: black;">
             <div class="form-line">
                     <select name="pilih" class="form-control show-tick">
-                    <option value="">Organik</option>
-                    <option value="Islam">NPA</option>
-                    <option value="Kristen">ZA</option>
-                    <option value="Hindu">Urea</option>
+                    <option value="Organik">Organik</option>
+                    <option value="NPA">NPA</option>
+                    <option value="ZA">ZA</option>
+                    <option value="Urea">Urea</option>
                     </select>
                 </div>
             </div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+            <button type="submit" class="btn btn-primary" onclick="myFunction()" name="simpan" data-dismiss="modal">Simpan</button>
+
+   
       </form>
       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-        <button name="simpan" class="btn btn-primary">Simpan</button>
+        
       </div>
     </div>
   </div>
 </div>
 
-        
+       
         
       </div>
     </div>
@@ -149,52 +167,7 @@ session_start();
                               </div>
                               </div>
   
-  <!--  <div class="row">
-      <div class="col-xs-3" style="margin-top: 100px;">
-      <h4 style="text-align: center; color: white; padding-top: 20px;"><img src="img/pupuk_urea.png" style="margin-right: 20px; padding-left: 20px;">Urea</h4>
-      <div class="box"></div>
-      <form method="POST">
-      <div class="form-group" style="margin-left: 100px;">
-        <label for="jumlah">Jumlah Stok</label>
-          <input type="number" name="jumlah" class="form-control" placeholder="masukkan jumlah stok" style="width: 100px;"> <br>
-        <input type="submit" class="btn btn-primary" name="submit" 
-        value="Tambah"style="margin-left: 0px;">
-    </form>
-      
-      </div>
-      <div class="col-xs-3" style="margin-left: 300px; margin-top: -400px;">
-      <h4 style="text-align: center; color: white; padding-top: 20px;"><img src="img/pupuk_npk.png" style="margin-right: 20px; padding-left: 20px;">NPK</h4>
-      <form method="POST">
-      <div class="form-group" style="margin-left: 100px;">
-        <label for="jumlah">Jumlah Stok</label>
-          <input type="number" name="jumlah" class="form-control" placeholder="masukkan jumlah stok" style="width: 100px;"> <br>
-        <input type="submit" class="btn btn-primary" name="submit" 
-        value="Tambah"style="margin-left: 0px;">
-    </form>
-      
-      </div>
-      <div class="col-xs-3" style="margin-left: 300px; margin-top: -400px;">
-      <h4 style="text-align: center; color: white; padding-top: 20px;"><img src="img/pupuk_organik.png" style="margin-right: 20px; padding-left: 20px;">Organik</h4>
-      <form method="POST">
-      <div class="form-group" style="margin-left: 100px;">
-        <label for="jumlah">Jumlah Stok</label>
-          <input type="number" name="jumlah" class="form-control" placeholder="masukkan jumlah stok" style="width: 100px;"> <br>
-        <input type="submit" class="btn btn-primary" name="submit" 
-        value="Tambah"style="margin-left: 0px;">
-    </form>
-      
-      </div>
-      <div class="col-xs-3" style="margin-left: 400px; margin-top: -350px;">
-      <h4 style="text-align: center; color: white; padding-top: 20px;"><img src="img/pupuk_za.png" style="margin-right: 20px; padding-left: 20px;">ZA</h4>
-      <form method="POST">
-      <div class="form-group" style="margin-left: 100px;">
-        <label for="jumlah">Jumlah Stok</label>
-          <input type="number" name="jumlah" class="form-control" placeholder="masukkan jumlah stok" style="width: 100px;"> <br>
-        <input type="submit" class="btn btn-primary" name="submit" 
-        value="Tambah"style="margin-left: 0px;">
-    </form>
-      
-      </div> -->
+  
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!-- footer -->
   
@@ -213,5 +186,6 @@ session_start();
     <script src="js/jquery-3.3.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    
   </body>
 </html>

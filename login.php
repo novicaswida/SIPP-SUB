@@ -87,7 +87,10 @@ ob_start();
       $sql = "select * from users where username = '$username' and
       password = '$password'";
       $result = mysqli_query($db,$sql);
-      if (mysqli_num_rows($result)>0) {
+      if (mysqli_num_rows($result)==0) {
+          echo "<script>alert('Username/Password salah');history.back(-1);</script>";
+      }
+      else {
         $row = mysqli_fetch_assoc($result);
         echo $row['jenisuser'];
         if ($row['jenisuser'] == 1) {
@@ -119,13 +122,8 @@ ob_start();
         $_SESSION['jenisuser'] = $row['jenisuser'];
 
         header('location: pengecer.php');
-        exit();        
-      }else {
-        ?>
-        <script type="text/javascript">
-          alert("Username/Password anda salah");
-        </script>
-        <?php
+        exit();
+        
       }
     }
   }

@@ -81,7 +81,8 @@ session_start();
     
 
    <div>
-   	<h1>yyyyyyyyyyyyyyyyyyyy</h1>
+    <br>
+   	<h1 style="text-align: center;">Penerimaan</h1>
    </div>
     
     <?php
@@ -103,6 +104,7 @@ session_start();
 
 
     <!-- footer -->
+    <br><br><br><br><br>
     <footer style="height: 80px; margin-top: -30px; padding-top: 30px;">
       <div class="container text-center">
         <div class="row">

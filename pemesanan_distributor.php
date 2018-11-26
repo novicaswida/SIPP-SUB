@@ -51,35 +51,63 @@ session_start();
           </li>
         </ul>
         <div class="navbar-header">        
-      <!-- </div> -->
-
-      <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#contact">Login</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#portofolio">Develop</a></li>
-        </ul>
-      </div> -->
-
-     <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="a">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expand="false" aria-label="Toggle navigation"> 
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Features</a>
-              <a class="nav-item nav-link" href="#">Pricing</a>
-              <a class="nav-item nav-link disabled" href="#">Disabled</a>
-            </div>
-          </div>
-        </div>
-      </nav> -->
+    
     </nav>
+
     <!-- akhir navbar -->
     <br>
     <h2 style="text-align: center;">Daftar Pemesanan</h2>
+        <div class="container">
+        <div class="table">
+            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Id Pengecer</th>
+                  <th>Jenis Pupuk</th>
+                  <th>Harga Pupuk</th>
+                </tr>
+              </thead>
+            <tbody>
+              <?php 
+                $no= 1;
+                $sql = "select * from users";
+                $result = mysqli_query($db,$sql);
+                while ($data = mysqli_fetch_assoc($result)) {
+              ?>
+              <tr>
+                <td><?php echo $no++; ?></td>
+                <td><?php echo $data['id'] ?></td>
+                <td><?php echo $data['nama'] ?></td>
+                <td><?php echo $data['pupuk'] ?></td>
+                <td><?php echo $data['harga'] ?></td>
+          
+                                            <?php
+                                            $jabatan="";
+                                            if ($data['jenisuser'] == 1) {
+                                              $jabatan = "admin";
+                                            } else if ($data['jenisuser'] == 2){
+                                              $jabatan = "distributor";
+                                            } else if ($data['jenisuser'] == 3){
+                                              $jabatan = "pengecer";
+                                            }
+                                            ?>
+                                            <td><?php echo $jabatan ?></td>
+                                            <td>
+                                              
+                                                  <!-- <a href="barangubah.php?id=<?php echo $data['id']; ?>" class="btn btn-success" >Ubah</a>
+                                                  <a href="">Hapus</a> -->
+
+                                            </td>
+                                        </tr>
+
+                                        <?php } ?>
+
+                                    </tbody>
+                                  </table>
+                                  <a href="register.php" class="btn btn-primary">Tambah Member</a>
+                              </div>
+                   </div>
 
 
    

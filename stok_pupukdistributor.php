@@ -62,21 +62,22 @@ session_start();
               <thead>
                 <tr>
                   <th>Id Pupuk</th>
+                  <th>Nama</th>
                   <th>Nama Pupuk</th>
                   <th>Jumlah Stok</th>
                 </tr>
               </thead>
             <tbody>
               <?php 
-                $sql = "select * from pupuk p join stok s, users u where p.id=s.id_pupuk and u.id=s.id_user";
+                $sql = "select u.id as id, u.nama as nama, p.nama_pupuk as pupuk, s.stok as stok from pupuk p join stok s, users u where p.id=s.id_pupuk and u.id=s.id_user";
                 $result = mysqli_query($db,$sql);
                 while ($data = mysqli_fetch_assoc($result)) {
               ?>
               <tr>
-                <td><?php echo $data['u.users'] ?></td>
-                <td><?php echo $data['u.nama'] ?></td>
-                <td><?php echo $data['p.nama'] ?></td>
-                <td><?php echo $data['s.stok'] ?></td>
+                <td><?php echo $data['id'] ?></td>
+                <td><?php echo $data['nama'] ?></td>
+                <td><?php echo $data['pupuk'] ?></td>
+                <td><?php echo $data['stok'] ?></td>
 
                 
                                               

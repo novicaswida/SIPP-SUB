@@ -103,7 +103,7 @@ if (isset($_POST["submit"])){
                 <option value="3">Pengecer</option>
               </select>
             </div>
-                <a style="margin-left: 500px;" class="btn btn-primary submit-button" name="simpan" type="submit" href="register.php">Daftar</a>
+                <a style="margin-left: 500px;" class="btn btn-primary submit-button" name="submit" type="submit" href="register.php">Daftar</a>
                   
           </form>
       </div>

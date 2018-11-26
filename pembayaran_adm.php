@@ -79,7 +79,7 @@ session_start();
     <!-- akhir navbar -->
     
 
-   <h2 style="text-align: center; margin-top: 100px;">Pembyaran</h2>
+   <h2 style="text-align: center; margin-top: 100px;">Pembayaran</h2>
   <div class="container">
   <div class="table">
     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
@@ -94,17 +94,16 @@ session_start();
               </thead>
             <tbody>
               <?php 
-                $sql = "select * from pembelian pb, user u, pupuk p, detailpembelian dp where pb.id=dp.id_pembelian and u.id=pb.id_user";
+                $sql = "select pb.id, u.id, u.nama. pu.nama, pu.Jumlah from pembelian pb, user u, pupuk p, detailpembelian dp where pb.id=dp.id_pembelian and u.id=pb.id_user and pu.id=dp.id";
                 $result = mysqli_query($db,$sql);
                 while ($data = mysqli_fetch_assoc($result)) {
               ?>
               <tr>
-                <td><?php echo $data['u.'] ?></td>
-                <td><?php echo $data['u.users'] ?></td>
+                <td><?php echo $data['pb.id'] ?></td>
+                <td><?php echo $data['u.id'] ?></td>
                 <td><?php echo $data['u.nama'] ?></td>
-                <td><?php echo $data['u.nama'] ?></td>
-                <td><?php echo $data['p.nama'] ?></td>
-                <td><?php echo $data['s.stok'] ?></td>
+                <td><?php echo $data['pu.nama'] ?></td>
+                <td><?php echo $data['dp.Jumlah'] ?></td>
 
                 
                                               

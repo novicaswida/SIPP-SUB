@@ -53,7 +53,11 @@ session_start();
         <div class="navbar-header">        
     
     </nav>
-    <!-- akhir navbar -->
+    
+    <div>
+    <br>
+    <h1 style="text-align: center;">Penyaluran Pupuk</h1>
+   </div>
     
 
    
